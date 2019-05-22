@@ -40,7 +40,7 @@ def get_all_titles(basedir,ext='.h5') :
 import sys
 import os
 import glob
-import hdf5_getters
+from MSD_Conversion import hdf5_getters
 import re
 
 class Song:
@@ -73,10 +73,11 @@ class Song:
         self.year = None
 
     def displaySongCount(self):
-        print "Total Song Count %i" % Song.songCount
+        print("Total Song Count {}".format(Song.songCount))
 
     def displaySong(self):
-        print "ID: %s" % self.id   
+        print("ID: {}".format(self.id))
+        
 
 
 def main():
@@ -149,9 +150,9 @@ def main():
                     sys.exit()
                 else:
                     prompt = True
-                    print "=============="
-                    print "I believe there has been an error with the input."
-                    print "=============="
+                    print("==============")
+                    print("I believe there has been an error with the input.")
+                    print("==============")
                     break
 
                 csvRowString += ","
@@ -193,7 +194,7 @@ def main():
     for root, dirs, files in os.walk(basedir):        
         files = glob.glob(os.path.join(root,'*'+ext))
         for f in files:
-            print f
+            print(f)
 
             songH5File = hdf5_getters.open_h5_file_read(f)
             song = Song(str(hdf5_getters.get_song_id(songH5File)))
