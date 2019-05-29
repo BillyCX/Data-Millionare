@@ -42,6 +42,7 @@ import os
 import glob
 from MSD_Conversion import hdf5_getters
 import re
+import csv
 
 class Song:
     songCount = 0
@@ -81,7 +82,8 @@ class Song:
 
 
 def main():
-    outputFile1 = open('SongCSV.csv', 'w')
+    #csv.writer('hdfs://192.168.1.153:9000/team09/SongCSV.csv')
+    outputFile1 = open('hdfs://192.168.1.153:9000/team09/SongCSV.csv', 'w')
     csvRowString = ""
 
     #################################################
@@ -186,7 +188,7 @@ def main():
 
     #Set the basedir here, the root directory from which the search
     #for files stored in a (hierarchical data structure) will originate
-    basedir = "." # "." As the default means the current directory
+    basedir = "'hdfs://192.168.1.153:9000/millionsongs/data'" # "." As the default means the current directory
     ext = ".h5" #Set the extension here. H5 is the extension for HDF5 files.
     #################################################
 
